@@ -1,30 +1,27 @@
 <template>
   <div class="main-001">
+    
+    <v-row style="margin: 0 !important" class="py-4" > 
+      <v-sheet class="mx-auto" max-width="700">
+        <v-slide-group multiple show-arrows>
+          <v-slide-item v-for="n in 25" :key="n" v-slot="{ active }">
+            <v-btn
+              class="mx-2"
+              :input-value="active"
+              active-class="purple white--text"
+              depressed
+              rounded
+              @click="cambiomenu(n-1)"
+            >
+              Options {{ n }}
+            </v-btn>
+          </v-slide-item>
+        </v-slide-group>
+      </v-sheet>
+    </v-row>
+
     <v-row class="proceso" style="margin: 0 !important">
-      <v-col class="col-3">
-        <div class="title-left" >
-            <div>
-                <v-icon>mdi-book</v-icon>
-            </div>
-            <div>
-                Proceso
-            </div>
-        </div>  
-        <v-list dense>
-          <!-- <v-subheader>REPORTS</v-subheader> -->
-          <v-list-item-group v-model="selectedItem" color="primary">
-            <v-list-item v-for="(item, i) in items" :key="i"  @click="cambiomenu(i)" >
-              <v-list-item-icon>
-                <v-icon v-text="item.icon"> mdi-grid-view </v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title v-text="item.text"></v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list-item-group>
-        </v-list>
-      </v-col>
-      <v-col class="col-9" style="border: 2px solid blue" >
+      <v-col class="col-12" style="border: 2px solid blue">
         <!-- 1 -->
         <ComponenteOne v-if="num == 0" />
         <!-- 2 -->
@@ -41,9 +38,9 @@
 
 <script>
 import Table from "./table.vue";
-import ComponenteOne from "./component-001.vue";
-import ComponenteTwo from "./component-002.vue";
-import ComponenteThree from "./component-003.vue";
+import ComponenteOne from "../layout01/component-001.vue";
+import ComponenteTwo from "../layout01/component-002.vue";
+import ComponenteThree from "../layout01/component-003.vue";
 
 export default {
   props: {
@@ -56,21 +53,21 @@ export default {
     ComponenteThree,
   },
   data() {
-      return{
-        selectedItem: 1,
-        items: [
-            { text: 'Relacion', icon: 'mdi-clock' },
-            { text: 'Borrador', icon: 'mdi-account' },
-            { text: 'Asignacion', icon: 'mdi-flag' },
-        ],
-        num:0
-      }
+    return {
+      selectedItem: 1,
+      items: [
+        { text: "Relacion", icon: "mdi-clock" },
+        { text: "Borrador", icon: "mdi-account" },
+        { text: "Asignacion", icon: "mdi-flag" },
+      ],
+      num: 0,
+    };
   },
-  methods : {
-      cambiomenu(numero){
-        this.num = numero
-      }
-  }
+  methods: {
+    cambiomenu(numero) {
+      this.num = numero;
+    },
+  },
 };
 </script>
 
@@ -89,15 +86,15 @@ export default {
   }
 }
 
-.title-left{
-    min-height: 40px;
-    border: 2px solid orange ;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    padding: 0 16px;
-    div:nth-child(1){
-        margin-right: 32px;
-    }
+.title-left {
+  min-height: 40px;
+  border: 2px solid orange;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 0 16px;
+  div:nth-child(1) {
+    margin-right: 32px;
+  }
 }
 </style>

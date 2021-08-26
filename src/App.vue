@@ -9,7 +9,9 @@
     </v-app-bar>
 
     <v-main>
-      <Main01 />
+      <Main01 v-if="false" />
+      <Main02 />
+
     </v-main>
   </v-app>
 </template>
@@ -18,12 +20,14 @@
 
 
 import Main01 from "./components/layout01/main";
+import Main02 from "./components/layaut02/main";
 
 export default {
   name: 'App',
 
   components: {
     Main01,
+    Main02,
   },
 
   data: () => ({
